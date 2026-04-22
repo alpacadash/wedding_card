@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>Wedding Invitation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ivory: #faf7f2;
+      --gold: #c9a96e;
+      --gold-light: #e8d5b0;
+      --brown: #6b4c3b;
+      --text: #3a2e2a;
+      --text-light: #7a6a62;
+      --pink: #f2ddd5;
+      --green: #8aad8a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--ivory);
+      color: var(--text);
+      font-family: 'Noto Serif KR', serif;
+      max-width: 480px;
+      margin: 0 auto;
+      overflow-x: hidden;
+    }
+
+    /* ── COVER ── */
+    .cover {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 30px;
+      background: linear-gradient(160deg, #f5ede3 0%, #faf7f2 50%, #ede8f0 100%);
+      overflow: hidden;
+    }
+
+    .cover::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 20%, rgba(201,169,110,.12) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 80%, rgba(138,173,138,.10) 0%, transparent 60%);
+    }
+
+    .petal {
+      position: absolute;
+      width: 10px;
+      height: 14px;
+      border-radius: 50% 50% 50% 0;
+      opacity: .5;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0%   { transform: translateY(-20px) rotate(0deg); opacity: .6; }
+      100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    }
+
+    .cover-inner { position: relative; z-index: 1; }
+
+    .cover-date-top {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px;
+      letter-spacing: .3em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp .8s .3s forwards;
+    }
+
+    .cover-divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp .8s .5s forwards;
+    }
+    .cover-divider span { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+    .cover-divider svg { width: 20px; height: 20px; fill: var(--gold); }
+
+    .names {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 52px;
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--brown);
+      letter-spacing: .03em;
+      opacity: 0;
+      animation: fadeUp .9s .7s forwards;
+    }
+    .names .amp {
+      display: block;
+      font-size: 36px;
+      font-style: italic;
+      color: var(--gold);
+      margin: 4px 0;
+    }
+
+    .names-ko {
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--text-light);
+      margin-top: 16px;
+      letter-spacing: .15em;
+      opacity: 0;
+      animation: fadeUp .8s .9s forwards;
+    }
+
+    .cover-date-bottom {
+      margin-top: 36px;
+      opacity: 0;
+      animation: fadeUp .8s 1.1s forwards;
+    }
+    .cover-date-bottom .date-big {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 300;
+      color: var(--brown);
+      letter-spacing: .1em;
+    }
+    .cover-date-bottom .date-sub {
+      font-size: 13px;
+      color: var(--text-light);
+      margin-top: 6px;
+      letter-spacing: .1em;
+    }
+
+    .scroll-hint {
+      margin-top: 52px;
+      opacity: 0;
+      animation: fadeUp .8s 1.4s forwards;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-light);
+      font-size: 11px;
+      letter-spacing: .2em;
+    }
+    .scroll-hint .arrow { animation: bounce 1.6s ease-in-out infinite; }
+    @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 70px 28px; }
+
+    .section-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 11px;
+      letter-spacing: .4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-align: center;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--brown);
+      margin-bottom: 36px;
+      letter-spacing: .05em;
+    }
+
+    .divider-line {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 40px;
+    }
+    .divider-line::before,
+    .divider-line::after { content:''; flex:1; height:1px; background: linear-gradient(90deg, transparent, var(--gold-light), transparent); }
+    .divider-line span { color: var(--gold); font-size: 16px; }
+
+    /* ── GREETING ── */
+    .greeting-section { background: #fff; }
+    .greeting-text {
+      font-size: 14.5px;
+      line-height: 2.1;
+      color: var(--text);
+      text-align: center;
+      word-break: keep-all;
+    }
+    .greeting-family {
+      margin-top: 32px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-light);
+      line-height: 2;
+      letter-spacing: .05em;
+    }
+
+    /* ── CALENDAR ── */
+    .calendar-section { background: var(--ivory); }
+    .cal-date-display {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .cal-date-display .cal-year {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px;
+      color: var(--gold);
+      letter-spacing: .3em;
+    }
+    .cal-date-display .cal-month-day {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 58px;
+      font-weight: 300;
+      color: var(--brown);
+      line-height: 1;
+    }
+    .cal-date-display .cal-day-name {
+      font-size: 13px;
+      color: var(--text-light);
+      letter-spacing: .2em;
+      margin-top: 6px;
+    }
+
+    .calendar-grid {
+      background: #fff;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 2px 20px rgba(0,0,0,.06);
+    }
+    .cal-header {
+      text-align: center;
+      font-size: 15px;
+      color: var(--brown);
+      margin-bottom: 16px;
+      font-weight: 400;
+      letter-spacing: .1em;
+    }
+    .cal-days-header {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      text-align: center;
+      font-size: 11px;
+      color: var(--text-light);
+      margin-bottom: 10px;
+      letter-spacing: .05em;
+    }
+    .cal-days-header span:first-child { color: #e07070; }
+    .cal-days-header span:last-child  { color: #7070e0; }
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+      text-align: center;
+    }
+    .cal-grid .day {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      color: var(--text);
+      border-radius: 50%;
+    }
+    .cal-grid .day.empty   { color: transparent; }
+    .cal-grid .day.sun     { color: #e07070; }
+    .cal-grid .day.sat     { color: #7070e0; }
+    .cal-grid .day.wedding {
+      background: var(--gold);
+      color: #fff !important;
+      font-weight: 600;
+      box-shadow: 0 2px 10px rgba(201,169,110,.5);
+    }
+
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 28px;
+    }
+    .countdown-item {
+      background: #fff;
+      border-radius: 12px;
+      padding: 16px 8px;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,.05);
+    }
+    .countdown-item .num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 30px;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .countdown-item .unit {
+      font-size: 10px;
+      color: var(--text-light);
+      margin-top: 4px;
+      letter-spacing: .1em;
+    }
+
+    /* ── GALLERY ── */
+    .gallery-section { background: var(--pink); padding: 70px 0; }
+    .gallery-section .section-label,
+    .gallery-section .section-title { padding: 0 28px; }
+    .gallery-section .divider-line  { padding: 0 28px; }
+
+    .gallery-scroll {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding: 0 28px 16px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .gallery-scroll::-webkit-scrollbar { display: none; }
+
+    .gallery-item {
+      flex: 0 0 220px;
+      height: 280px;
+      border-radius: 14px;
+      overflow: hidden;
+      scroll-snap-align: start;
+      background: var(--gold-light);
+      position: relative;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .gallery-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: var(--brown);
+      font-size: 13px;
+      letter-spacing: .05em;
+    }
+    .gallery-placeholder svg { width: 36px; height: 36px; fill: var(--gold); opacity: .6; }
+
+    /* ── LOCATION ── */
+    .location-section { background: #fff; }
+    .venue-name {
+      text-align: center;
+      font-size: 20px;
+      color: var(--brown);
+      margin-bottom: 6px;
+      font-weight: 400;
+    }
+    .venue-hall {
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-light);
+      margin-bottom: 8px;
+    }
+    .venue-addr {
+      text-align: center;
+      font-size: 12.5px;
+      color: var(--text-light);
+      margin-bottom: 28px;
+      line-height: 1.7;
+    }
+    .map-box {
+      width: 100%;
+      height: 200px;
+      border-radius: 14px;
+      overflow: hidden;
+      background: var(--gold-light);
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .map-box iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .map-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: var(--brown);
+      font-size: 13px;
+    }
+    .map-placeholder svg { width: 32px; height: 32px; fill: var(--gold); }
+
+    .map-btn-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+    .map-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 13px;
+      border-radius: 10px;
+      border: 1.5px solid var(--gold-light);
+      background: #fff;
+      color: var(--brown);
+      font-size: 13px;
+      font-family: 'Noto Serif KR', serif;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .map-btn:hover { background: var(--ivory); }
+    .map-btn svg { width: 16px; height: 16px; fill: var(--gold); }
+
+    .transport-box {
+      background: var(--ivory);
+      border-radius: 14px;
+      padding: 22px;
+    }
+    .transport-box h4 {
+      font-size: 13px;
+      color: var(--brown);
+      margin-bottom: 14px;
+      letter-spacing: .05em;
+    }
+    .transport-item {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 12px;
+      font-size: 12.5px;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+    .transport-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--gold-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 13px;
+    }
+
+    /* ── CONTACT ── */
+    .contact-section { background: var(--ivory); }
+    .contact-card {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(0,0,0,.06);
+      margin-bottom: 16px;
+    }
+    .contact-header {
+      background: linear-gradient(135deg, var(--gold-light), #f5ede3);
+      padding: 16px 20px;
+      font-size: 13px;
+      color: var(--brown);
+      letter-spacing: .05em;
+    }
+    .contact-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--ivory);
+    }
+    .contact-row:last-child { border-bottom: none; }
+    .contact-info { display: flex; flex-direction: column; gap: 2px; }
+    .contact-name { font-size: 14px; color: var(--text); }
+    .contact-rel  { font-size: 11px; color: var(--text-light); }
+    .contact-btns { display: flex; gap: 8px; }
+    .contact-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1.5px solid var(--gold-light);
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: background .2s;
+    }
+    .contact-btn:hover { background: var(--ivory); }
+    .contact-btn svg { width: 16px; height: 16px; fill: var(--gold); }
+
+    /* ── ACCOUNT ── */
+    .account-section { background: #fff; }
+    .account-notice {
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-light);
+      line-height: 1.8;
+      margin-bottom: 28px;
+      word-break: keep-all;
+    }
+    .account-card {
+      background: var(--ivory);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 14px;
+    }
+    .account-card-title {
+      font-size: 12px;
+      color: var(--gold);
+      letter-spacing: .1em;
+      margin-bottom: 12px;
+    }
+    .account-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .account-row:last-child { margin-bottom: 0; }
+    .account-info { font-size: 13px; color: var(--text); }
+    .account-bank { font-size: 11px; color: var(--text-light); margin-top: 2px; }
+    .copy-btn {
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1.5px solid var(--gold-light);
+      background: #fff;
+      color: var(--brown);
+      font-size: 11px;
+      font-family: 'Noto Serif KR', serif;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .copy-btn:hover { background: var(--gold-light); }
+    .copy-toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: rgba(60,50,40,.9);
+      color: #fff;
+      padding: 10px 22px;
+      border-radius: 24px;
+      font-size: 13px;
+      opacity: 0;
+      pointer-events: none;
+      transition: all .3s;
+      z-index: 999;
+      white-space: nowrap;
+    }
+    .copy-toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--brown);
+      color: rgba(255,255,255,.6);
+      text-align: center;
+      padding: 40px 28px;
+      font-size: 11px;
+      line-height: 2;
+      letter-spacing: .1em;
+    }
+    footer .footer-names {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      color: var(--gold-light);
+      margin-bottom: 10px;
+      font-weight: 300;
+    }
+
+    /* ── REVEAL ANIMATION ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ COVER ══ -->
+<section class="cover" id="cover">
+  <div id="petals"></div>
+  <div class="cover-inner">
+    <p class="cover-date-top">2026 · 06 · 06</p>
+
+    <div class="cover-divider">
+      <span></span>
+      <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+      <span></span>
+    </div>
+
+    <div class="names">
+      Kim Minho
+      <span class="amp">&amp;</span>
+      Lee Jiyeon
+    </div>
+
+    <p class="names-ko">김민호 · 이지연</p>
+
+    <div class="cover-date-bottom">
+      <p class="date-big">2026 · 06 · 06</p>
+      <p class="date-sub">토요일 오후 2시 · 그랜드볼룸</p>
+    </div>
+
+    <div class="scroll-hint">
+      <span>SCROLL</span>
+      <span class="arrow">↓</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ GREETING ══ -->
+<section class="greeting-section reveal">
+  <p class="section-label">Invitation</p>
+  <h2 class="section-title">인사말</h2>
+  <div class="divider-line"><span>✦</span></div>
+
+  <p class="greeting-text">
+    서로가 마주보며 다져온 사랑을<br/>
+    이제 함께 한 곳을 바라보며<br/>
+    걸어가고자 합니다.<br/>
+    <br/>
+    저희 두 사람이 사랑으로 하나 되는<br/>
+    소중한 날에 오셔서<br/>
+    축복해 주시면 감사하겠습니다.
+  </p>
+
+  <div class="greeting-family">
+    <p>김철수 · 박영희의 장남 <strong>민호</strong></p>
+    <p>이상진 · 최미란의 장녀 <strong>지연</strong>
+    </p>
+  </div>
+</section>
+
+<!-- ══ CALENDAR ══ -->
+<section class="calendar-section reveal">
+  <p class="section-label">Date</p>
+  <h2 class="section-title">날짜</h2>
+  <div class="divider-line"><span>✦</span></div>
+
+  <div class="cal-date-display">
+    <p class="cal-year">2026</p>
+    <p class="cal-month-day">06.06</p>
+    <p class="cal-day-name">토요일 · SATURDAY</p>
+  </div>
+
+  <div class="calendar-grid">
+    <p class="cal-header">June 2026</p>
+    <div class="cal-days-header">
+      <span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span>
+    </div>
+    <div class="cal-grid" id="calGrid"></div>
+  </div>
+
+  <div class="countdown" id="countdown">
+    <div class="countdown-item"><p class="num" id="cd-d">--</p><p class="unit">DAYS</p></div>
+    <div class="countdown-item"><p class="num" id="cd-h">--</p><p class="unit">HOURS</p></div>
+    <div class="countdown-item"><p class="num" id="cd-m">--</p><p class="unit">MINS</p></div>
+    <div class="countdown-item"><p class="num" id="cd-s">--</p><p class="unit">SECS</p></div>
+  </div>
+</section>
+
+<!-- ══ GALLERY ══ -->
+<section class="gallery-section reveal">
+  <p class="section-label">Gallery</p>
+  <h2 class="section-title">우리의 이야기</h2>
+  <div class="divider-line" style="padding:0 28px"><span>✦</span></div>
+
+  <div class="gallery-scroll">
+    <div class="gallery-item">
+      <div class="gallery-placeholder">
+        <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+        <span>사진 1</span>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">
+        <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+        <span>사진 2</span>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">
+        <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+        <span>사진 3</span>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">
+        <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+        <span>사진 4</span>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">
+        <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+        <span>사진 5</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ LOCATION ══ -->
+<section class="location-section reveal">
+  <p class="section-label">Location</p>
+  <h2 class="section-title">오시는 길</h2>
+  <div class="divider-line"><span>✦</span></div>
+
+  <p class="venue-name">더 그랜드 웨딩홀</p>
+  <p class="venue-hall">그랜드볼룸 2층</p>
+  <p class="venue-addr">서울특별시 강남구 테헤란로 123<br/>지하 1층 ~ 지상 3층</p>
+
+  <div class="map-box">
+    <!-- 실제 지도 iframe 삽입 위치 (카카오맵 / 네이버 지도) -->
+    <div class="map-placeholder">
+      <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+      <span>지도를 여기에 삽입하세요</span>
+    </div>
+  </div>
+
+  <div class="map-btn-row">
+    <a class="map-btn" href="https://map.kakao.com/?q=강남구+테헤란로+123" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+      카카오맵
+    </a>
+    <a class="map-btn" href="https://map.naver.com/p/search/강남구+테헤란로+123" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+      네이버지도
+    </a>
+  </div>
+
+  <div class="transport-box">
+    <h4>교통 안내</h4>
+    <div class="transport-item">
+      <div class="transport-icon">🚇</div>
+      <div>
+        <strong>지하철</strong><br/>
+        2호선 강남역 3번 출구 도보 5분
+      </div>
+    </div>
+    <div class="transport-item">
+      <div class="transport-icon">🚌</div>
+      <div>
+        <strong>버스</strong><br/>
+        강남역 정류장 하차 (140, 360, 740번)
+      </div>
+    </div>
+    <div class="transport-item">
+      <div class="transport-icon">🚗</div>
+      <div>
+        <strong>자가용</strong><br/>
+        건물 지하 주차장 이용 가능 (2시간 무료)
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section class="contact-section reveal">
+  <p class="section-label">Contact</p>
+  <h2 class="section-title">연락처</h2>
+  <div class="divider-line"><span>✦</span></div>
+
+  <div class="contact-card">
+    <div class="contact-header">신랑측</div>
+    <div class="contact-row">
+      <div class="contact-info">
+        <span class="contact-name">김민호</span>
+        <span class="contact-rel">신랑</span>
+      </div>
+      <div class="contact-btns">
+        <a class="contact-btn" href="tel:010-1234-5678">
+          <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        </a>
+        <a class="contact-btn" href="sms:010-1234-5678">
+          <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="contact-row">
+      <div class="contact-info">
+        <span class="contact-name">김철수</span>
+        <span class="contact-rel">신랑 아버지</span>
+      </div>
+      <div class="contact-btns">
+        <a class="contact-btn" href="tel:010-2345-6789">
+          <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        </a>
+        <a class="contact-btn" href="sms:010-2345-6789">
+          <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="contact-row">
+      <div class="contact-info">
+        <span class="contact-name">박영희</span>
+        <span class="contact-rel">신랑 어머니</span>
+      </div>
+      <div class="contact-btns">
+        <a class="contact-btn" href="tel:010-3456-7890">
+          <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        </a>
+        <a class="contact-btn" href="sms:010-3456-7890">
+          <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-card">
+    <div class="contact-header">신부측</div>
+    <div class="contact-row">
+      <div class="contact-info">
+        <span class="contact-name">이지연</span>
+        <span class="contact-rel">신부</span>
+      </div>
+      <div class="contact-btns">
+        <a class="contact-btn" href="tel:010-4567-8901">
+          <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        </a>
+        <a class="contact-btn" href="sms:010-4567-8901">
+          <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="contact-row">
+      <div class="contact-info">
+        <span class="contact-name">이상진</span>
+        <span class="contact-rel">신부 아버지</span>
+      </div>
+      <div class="contact-btns">
+        <a class="contact-btn" href="tel:010-5678-9012">
+          <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        </a>
+        <a class="contact-btn" href="sms:010-5678-9012">
+          <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="contact-row">
+      <div class="contact-info">
+        <span class="contact-name">최미란</span>
+        <span class="contact-rel">신부 어머니</span>
+      </div>
+      <div class="contact-btns">
+        <a class="contact-btn" href="tel:010-6789-0123">
+          <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        </a>
+        <a class="contact-btn" href="sms:010-6789-0123">
+          <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ACCOUNT ══ -->
+<section class="account-section reveal">
+  <p class="section-label">Gift</p>
+  <h2 class="section-title">마음 전하기</h2>
+  <div class="divider-line"><span>✦</span></div>
+
+  <p class="account-notice">
+    참석이 어려우신 분들을 위해<br/>
+    계좌 번호를 안내해 드립니다.<br/>
+    축하해 주시는 마음만으로도 감사합니다.
+  </p>
+
+  <div class="account-card">
+    <p class="account-card-title">신랑측</p>
+    <div class="account-row">
+      <div>
+        <p class="account-info">국민은행 123-456-789012</p>
+        <p class="account-bank">예금주: 김민호</p>
+      </div>
+      <button class="copy-btn" onclick="copyAccount('국민은행 123-456-789012')">복사</button>
+    </div>
+    <div class="account-row">
+      <div>
+        <p class="account-info">신한은행 110-234-567890</p>
+        <p class="account-bank">예금주: 김철수 (부)</p>
+      </div>
+      <button class="copy-btn" onclick="copyAccount('신한은행 110-234-567890')">복사</button>
+    </div>
+  </div>
+
+  <div class="account-card">
+    <p class="account-card-title">신부측</p>
+    <div class="account-row">
+      <div>
+        <p class="account-info">우리은행 1002-345-678901</p>
+        <p class="account-bank">예금주: 이지연</p>
+      </div>
+      <button class="copy-btn" onclick="copyAccount('우리은행 1002-345-678901')">복사</button>
+    </div>
+    <div class="account-row">
+      <div>
+        <p class="account-info">하나은행 123-456789-01234</p>
+        <p class="account-bank">예금주: 이상진 (부)</p>
+      </div>
+      <button class="copy-btn" onclick="copyAccount('하나은행 123-456789-01234')">복사</button>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <p class="footer-names">Kim Minho &amp; Lee Jiyeon</p>
+  <p>2026년 6월 6일 토요일 오후 2시</p>
+  <p>더 그랜드 웨딩홀 그랜드볼룸</p>
+</footer>
+
+<div class="copy-toast" id="copyToast">계좌번호가 복사되었습니다</div>
+
+<script>
+  /* ── PETALS ── */
+  const petalsContainer = document.getElementById('petals');
+  const colors = ['#f5c6b8','#e8a89c','#f2ddd5','#c9a96e','#d4b896','#b5cbb5'];
+  for (let i = 0; i < 18; i++) {
+    const p = document.createElement('div');
+    p.className = 'petal';
+    const size = Math.random() * 8 + 6;
+    p.style.cssText = `
+      left:${Math.random()*100}%;
+      top:${Math.random()*-20}%;
+      width:${size}px;
+      height:${size*1.4}px;
+      background:${colors[Math.floor(Math.random()*colors.length)]};
+      animation-duration:${Math.random()*6+6}s;
+      animation-delay:${Math.random()*8}s;
+    `;
+    petalsContainer.appendChild(p);
+  }
+
+  /* ── CALENDAR ── */
+  (function buildCal() {
+    const grid = document.getElementById('calGrid');
+    // June 2026: starts on Monday (day index 1 in 0=Sun scheme)
+    const startDay = 1; // 2026-06-01 is Monday
+    const totalDays = 30;
+    const weddingDay = 6;
+    for (let i = 0; i < startDay; i++) {
+      const el = document.createElement('div');
+      el.className = 'day empty';
+      el.textContent = '0';
+      grid.appendChild(el);
+    }
+    for (let d = 1; d <= totalDays; d++) {
+      const el = document.createElement('div');
+      const dayOfWeek = (startDay + d - 1) % 7;
+      let cls = 'day';
+      if (d === weddingDay) cls += ' wedding';
+      else if (dayOfWeek === 0) cls += ' sun';
+      else if (dayOfWeek === 6) cls += ' sat';
+      el.className = cls;
+      el.textContent = d;
+      grid.appendChild(el);
+    }
+  })();
+
+  /* ── COUNTDOWN ── */
+  function updateCountdown() {
+    const target = new Date('2026-06-06T14:00:00+09:00').getTime();
+    const now = Date.now();
+    const diff = target - now;
+    if (diff <= 0) {
+      ['d','h','m','s'].forEach(u => document.getElementById('cd-'+u).textContent = '00');
+      return;
+    }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('cd-d').textContent = String(d).padStart(2,'0');
+    document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
+    document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  /* ── SCROLL REVEAL ── */
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  /* ── COPY ACCOUNT ── */
+  function copyAccount(text) {
+    navigator.clipboard.writeText(text).catch(() => {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.cssText = 'position:fixed;opacity:0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+    });
+    const toast = document.getElementById('copyToast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2200);
+  }
+</script>
+</body>
+</html>
